@@ -5,7 +5,7 @@ package com.falpema.service;
  * @author falpema
  *
  */
-class PayHoursMondayFridayCalculationFrom12To9 implements PayCalculationStrategy {
+class PayHoursMondayFridayCalculationFrom0To9 implements PayCalculationStrategy {
 
 	public double calculatePay(double workHours) {
 
@@ -32,7 +32,7 @@ class PayHoursMondayFridayCalculationFrom18To24 implements PayCalculationStrateg
 
 }
 
-class PayHoursSaturdaySundayCalculationFrom12To9 implements PayCalculationStrategy {
+class PayHoursSaturdaySundayCalculationFrom0To9 implements PayCalculationStrategy {
 
 	public double calculatePay(double workHours) {
 
