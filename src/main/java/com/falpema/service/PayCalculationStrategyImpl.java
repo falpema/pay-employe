@@ -58,3 +58,12 @@ class PayHoursSaturdaySundayCalculationFrom18To24 implements PayCalculationStrat
 	}
 
 }
+
+class NoPayCalculation implements PayCalculationStrategy {
+
+	public double calculatePay(double workHours) {
+
+		return 0 ;
+	}
+
+}
