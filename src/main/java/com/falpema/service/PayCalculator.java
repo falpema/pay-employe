@@ -24,12 +24,9 @@ public class PayCalculator {
 			for (String dayHours : days) {
 				String day = dayHours.substring(0, 2);
 				List<String>  hoursBetween = getHoursbetween(dayHours.substring(2, dayHours.length() ));
-				for (String time : hoursBetween) {
-					PayCalculationStrategy cal = payCalculationStrategyFactory.getPayHourStrategy(day, time);
-					SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-					Date date1 = sdf.parse(time.split("-")[0]);
-					Date date2 = sdf.parse(time.split("-")[1]);
-					double differenceInHours = (Math.abs(date2.getTime() - date1.getTime()) / (60 * 60 * 1000)) % 24;
+				for (String timeRange : hoursBetween) {
+					PayCalculationStrategy cal = payCalculationStrategyFactory.getPayHourStrategy(day, timeRange);
+					double differenceInHours = getHoursBetweenRangeTime(timeRange);
 					pay += cal.calculatePay(differenceInHours);
 				}
 			}
@@ -38,6 +35,7 @@ public class PayCalculator {
 		}
 		return pay;
 	}
+
 
 	/**
 	 * get List of hours in range
@@ -94,6 +92,13 @@ public class PayCalculator {
 	public static String formattedWithOutMinutes(int n) {
 
 		return String.format("%02d", n);
+	}
+	
+	private static double getHoursBetweenRangeTime(String timeRange) throws ParseException {
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+		Date date1 = sdf.parse(timeRange.split("-")[0]);
+		Date date2 = sdf.parse(timeRange.split("-")[1]);
+		return (Math.abs(date2.getTime() - date1.getTime()) / (60 * 60 * 1000)) % 24;
 	}
 
 }
