@@ -18,7 +18,7 @@ public class PayCalculationStrategyFactory {
 		String time2 = "09:00";
 		String time3 = "18:00";
 		String time4 = "24:00";
-		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 		Date date1 = sdf.parse(time1);
 		Date date2 = sdf.parse(time2);
 		Date date3 = sdf.parse(time3);
