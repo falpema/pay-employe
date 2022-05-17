@@ -26,7 +26,7 @@ public class PayCalculator {
 				List<String>  hoursBetween = getHoursbetween(dayHours.substring(2, dayHours.length() ));
 				for (String time : hoursBetween) {
 					PayCalculationStrategy cal = payCalculationStrategyFactory.getPayHourStrategy(day, time);
-					SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+					SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 					Date date1 = sdf.parse(time.split("-")[0]);
 					Date date2 = sdf.parse(time.split("-")[1]);
 					double differenceInHours = (Math.abs(date2.getTime() - date1.getTime()) / (60 * 60 * 1000)) % 24;
@@ -66,7 +66,8 @@ public class PayCalculator {
 	}
 
 	public static void main(String args[]) {
-		String input = "RENE=MO10:00-12:00,TU10:00-12:00,TH01:00-03:00,SA14:00-18:00,SU20:00-21:00";
+		String input = "ASTRID=MO10:00-12:00,TH12:00-14:00,SU20:00-21:00";
+				//"RENE=MO10:00-12:00,TU10:00-12:00,TH01:00-03:00,SA14:00-18:00,SU20:00-21:00";
 		double pay = 0d;
 		String name = input.split("=")[0];
 		String schedule = input.split("=")[1];
@@ -75,7 +76,7 @@ public class PayCalculator {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		log.info("OUTPUT /n The amount to pay {} is : {} ", name, pay);
+		log.info("OUTPUT \n The amount to pay {} is : {} USD", name, pay);
 
 	}
 

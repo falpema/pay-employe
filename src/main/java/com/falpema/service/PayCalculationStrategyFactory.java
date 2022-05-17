@@ -26,21 +26,21 @@ public class PayCalculationStrategyFactory {
 		Date dini = sdf.parse(time.split("-")[0]);
 		if (day.compareTo("MO") == 0 || day.compareTo("TU") == 0 || day.compareTo("WE") == 0 || day.compareTo("TH") == 0
 				|| day.compareTo("FR") == 0) {
-			if (dini.compareTo(date1) >= 0 && dini.after(date2)) {
+			if (dini.compareTo(date1) >= 0 && dini.before(date2)) {
 				return payHoursMonToFriday0To9;
-			} else if (dini.compareTo(date2) >= 0 && dini.after(date3)) {
+			} else if (dini.compareTo(date2) >= 0 && dini.before(date3)) {
 				return payHoursMonToFriday9To18;
-			} else if (dini.compareTo(date3) >= 0 && dini.after(date4)) {
+			} else if (dini.compareTo(date3) >= 0 && dini.before(date4)) {
 				return payHoursMonToFriday18To24;
 			} else {
 				return nopayCalculationStrategy;
 			}
 		} else if (day.compareTo("SA") == 0 || day.compareTo("SU") == 0) {
-			if (dini.compareTo(date1) >= 0 && dini.after(date2)) {
+			if (dini.compareTo(date1) >= 0 && dini.before(date2)) {
 				return payHoursSatToSunday0To9;
-			} else if (dini.compareTo(date2) >= 0 && dini.after(date3)) {
+			} else if (dini.compareTo(date2) >= 0 && dini.before(date3)) {
 				return payHoursSatToSunday9To18;
-			} else if (dini.compareTo(date3) >= 0 && dini.after(date4)) {
+			} else if (dini.compareTo(date3) >= 0 && dini.before(date4)) {
 				return payHoursSatToSunday18To24;
 			} else {
 				return nopayCalculationStrategy;
